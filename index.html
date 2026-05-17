@@ -36,7 +36,16 @@ body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif
 ═══════════════════════════════════════════════ */
 nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 5%;transition:all .4s;}
 nav.scrolled{background:rgba(5,5,8,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
-.nav-logo{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.6rem;letter-spacing:3px;color:#fff;}
+.nav-logo {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 1.6rem;
+  letter-spacing: 3px;
+  color: #fff;
+  text-decoration: none !important; /* This forces the underline to disappear */
+  border: none;
+  outline: none;
+}
 .nav-logo span{color:var(--orange);}
 .nav-links{display:flex;gap:32px;list-style:none;}
 .nav-links a{font-size:.82rem;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.65);transition:color .3s;position:relative;}
@@ -58,15 +67,16 @@ nav.scrolled{background:rgba(5,5,8,.95);backdrop-filter:blur(20px);border-bottom
 /* ═══════════════════════════════════════════════
    HERO (UPDATED FOR PERFECT POSITIONING)
 ═══════════════════════════════════════════════ */
-#hero {
-  height: 100vh;
-  min-height: 800px; /* Prevents layout crushing on short laptop screens */
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  align-items: center; /* Naturally centers the content vertically */
-  padding: 0 5%;
-}
+/* Hero Mobile Fixes */
+  #hero {
+    padding-top: 110px; /* Gives a solid buffer below the navbar */
+    padding-bottom: 0;
+    height: auto;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers it perfectly instead of pushing it up */
+  }
 .hero-parallax {
   position: absolute;
   inset: -15%;
@@ -81,12 +91,11 @@ nav.scrolled{background:rgba(5,5,8,.95);backdrop-filter:blur(20px);border-bottom
               linear-gradient(to top, rgba(5,5,8,0.95) 0%, transparent 40%);
 }
 .hero-inner {
-  position: relative;
-  z-index: 2;
-  max-width: 780px;
-  width: 100%;
-  margin-top: -60px; /* Optical adjustment to balance the bottom stats bar */
-}
+    padding: 0 5%;
+    max-width: 100%;
+    margin-top: 0; /* Removes the negative margin causing the overlap */
+    margin-bottom: 40px; /* Creates breathing room above the stats grid */
+  }
 .hero-badge {
   display: inline-flex;
   align-items: center;
